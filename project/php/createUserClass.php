@@ -6,9 +6,8 @@
  * the user. It sets up a user in the 'users' table and creates a
  * personal table for that user. Easy-peasy.
  */
-
+require("passwordCheck.php");
 //require("../../databaseAccess.php");
-
 class createUser{
 
     private $email;
@@ -18,12 +17,19 @@ class createUser{
     private $userID;
     private $tableName;
 
+    public $message = "You fucked up Jim.";
+
     function __construct($inEmail, $inPassword, $inFirstName) {
         $this->email       = $inEmail;
-        $this->password    = $inPassword;
         $this->firstName   = $inFirstName;
         $userNameArray     = array();
         $this->tableName   = "";
+
+
+        // Check the bloody password
+        if(crackLibCheck($inPassword, $message)){
+            $this->password    = $inPassword;
+        }
 
         // create the user name from the email
         $emailPattern = "/^.*?(?=@)/";
