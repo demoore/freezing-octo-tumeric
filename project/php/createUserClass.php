@@ -31,6 +31,8 @@ class createUser{
             $this->password    = $inPassword;
         }
 
+
+
         // create the user name from the email
         $emailPattern = "/^.*?(?=@)/";
         preg_match($emailPattern,$this->email, $userNameArray);

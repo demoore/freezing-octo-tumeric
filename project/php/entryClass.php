@@ -29,7 +29,6 @@ class entry {
         $this->entryName     = $inEntryName;
 
 
-
         $this->entryDate     = $this->transformDate($inEntryDate);
 
         $this->createEntry();
@@ -49,6 +48,8 @@ class entry {
 
         $entryQuery = "INSERT INTO $this->userTableName (entryName, entryDate)
                        VALUES (\"$this->entryName\", \"$this->entryDate\")";
+
+
 
         $DBConnection->query($entryQuery) or die(mysqli_error($DBConnection));
         $DBConnection->close();

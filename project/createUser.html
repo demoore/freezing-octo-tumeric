@@ -1,29 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <!--
-    This is just a test page to work off of
-    We'll require actual javascript and PHP
-    verification later --Dylan
-    --->
+<!--
+This is just a test page to work off of
+We'll require actual javascript and PHP
+verification later --Dylan
+-->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"/>
     <title>Create a new user</title>
 </head>
 
 <body>
 <div class="container">
-<h1>Create User</h1>
-<form action="php/processUser.php" method="POST">
-    Email:        <input type="text"     name="userEmail"/>     <br>
-    Password:     <input type="password" name="password"/>  <br>
-    First Name:   <input type="text"     name="firstName"/>     <br>
-    <input type="submit" value="Submit"/>
-</form>
-    </div>
+    <h1>Create User</h1>
 
+    <form action="php/processUser.php" method="POST" class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="userEmail">Email:</label>
+
+            <div class="controls">
+                <input type="text" name="userEmail" class="span4" id="userEmail"/> <br>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="password" class="control-label">Password:</label>
+
+            <div class="controls">
+                <input type="password" name="password" class="span4" id="password" onclick="passwordStrength()"/> <br>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="rePassword" class="control-label">Retype Password:</label>
+
+            <div class="controls">
+                <input type="password" name="rePassword" class="span4" id="rePassword"/> <br>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="firstName" class="control-label">First Name:</label>
+
+            <div class="controls">
+                <input type="text" name="firstName" class="span4" id="firstName"/> <br>
+
+            </div>
+        </div>
+        <div class="controls">
+        <input type="submit" value="Submit" class="btn"/>
+        </div>
+    </form>
+
+</div>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/validator.js"></script>
 </body>
 
 </html>
