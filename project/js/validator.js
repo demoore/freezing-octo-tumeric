@@ -46,7 +46,25 @@ function passwordStrength(password, passwordStrength, errorField) {
     if (password.length > 12) score++;
 
     passwordStrength.innerHTML = desc[score];
-    passwordStrength.className = "strength" + score;
+
+    if (score <= 1) {
+        passwordStrength.className = "label label-important";
+    }
+
+    if (score == 2) {
+        passwordStrength.className = "label label-warning";
+    }
+
+
+    if (score == 3) {
+        passwordStrength.className = "label label-warning";
+    }
+
+    if (score >= 4) {
+        passwordStrength.className = "label label-success";
+    }
+
+
 }
 
 $(document).ready(function () {
@@ -59,7 +77,7 @@ $(document).ready(function () {
             },
             rePassword: {
                 required: true,
-                minlength: 5,
+                minLength: 5,
                 equalTo: "#password"
             }
         },
@@ -68,7 +86,7 @@ $(document).ready(function () {
             userEmail: "Please provide an email",
             rePassword: {
                 required: "You need to provide a password",
-                minlength: "Your password must be at least 5 characters long",
+                minLength: "Your password must be at least 5 characters long",
                 equalTo: "Your password does not match"
             }
         }
