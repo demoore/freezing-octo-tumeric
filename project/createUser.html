@@ -22,10 +22,34 @@ verification later --Dylan
 </head>
 
 <body>
+<div class="navbar-wrapper">
+    <div class="container">
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".new-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="brand">Project</a>
+
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active">
+                            <a href="userEntryTest.html">User Entry Test</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <h1>Create User</h1>
 
     <form action="php/processUser.php" method="POST" class="form-horizontal" id="createUser">
+
         <div class="control-group">
             <label class="control-label" for="userEmail">Email:</label>
 
