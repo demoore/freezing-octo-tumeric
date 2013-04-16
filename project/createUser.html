@@ -8,8 +8,16 @@ verification later --Dylan
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Scripts -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
+    <script src="js/validator.js"></script>
+
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"/>
+    <link rel="stylesheet" href="css/style.css" media="screen"/>
     <title>Create a new user</title>
 </head>
 
@@ -17,7 +25,7 @@ verification later --Dylan
 <div class="container">
     <h1>Create User</h1>
 
-    <form action="php/processUser.php" method="POST" class="form-horizontal">
+    <form action="php/processUser.php" method="POST" class="form-horizontal" id="createUser">
         <div class="control-group">
             <label class="control-label" for="userEmail">Email:</label>
 
@@ -30,9 +38,12 @@ verification later --Dylan
             <label for="password" class="control-label">Password:</label>
 
             <div class="controls">
-                <input type="password" name="password" class="span4" id="password" onclick="passwordStrength()"/> <br>
+                <input type="password" name="password" class="span4" id="password"
+                       onblur="passwordStrength(this.value,document.getElementById('strength'),document.getElementById('passError'))"/>
+                <span id="passError"></span><span id="strength"></span> <br>
             </div>
         </div>
+
 
         <div class="control-group">
             <label for="rePassword" class="control-label">Retype Password:</label>
@@ -51,14 +62,12 @@ verification later --Dylan
             </div>
         </div>
         <div class="controls">
-        <input type="submit" value="Submit" class="btn"/>
+            <input type="submit" value="Submit" class="btn"/>
         </div>
     </form>
 
 </div>
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/validator.js"></script>
+
 </body>
 
 </html>

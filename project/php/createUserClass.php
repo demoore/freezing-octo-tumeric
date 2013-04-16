@@ -8,7 +8,8 @@
  */
 require("passwordCheck.php");
 //require("../../databaseAccess.php");
-class createUser{
+class createUser
+{
 
     private $email;
     private $password;
@@ -19,32 +20,31 @@ class createUser{
 
     public $message = "You fucked up Jim.";
 
-    function __construct($inEmail, $inPassword, $inFirstName) {
-        $this->email       = $inEmail;
-        $this->firstName   = $inFirstName;
-        $userNameArray     = array();
-        $this->tableName   = "";
+    function __construct($inEmail, $inPassword, $inFirstName)
+    {
+        $this->email = $inEmail;
+        $this->firstName = $inFirstName;
+        $userNameArray = array();
+        $this->tableName = "";
 
 
         // Check the bloody password
-        if(crackLibCheck($inPassword, $message)){
-            $this->password    = $inPassword;
+        if (crackLibCheck($inPassword, $message)) {
+            $this->password = $inPassword;
         }
 
 
-
-        // create the user name from the email
+        // create the user name from the userEmail
         $emailPattern = "/^.*?(?=@)/";
-        preg_match($emailPattern,$this->email, $userNameArray);
+        preg_match($emailPattern, $this->email, $userNameArray);
         $this->userName = $userNameArray[0];
 
         $this->createUserEntry();
-        $this->userID     =  $this->getUserID();
+        $this->userID = $this->getUserID();
         $this->createUserTable();
         $this->setUserTableName();
 
     }
-
 
 
     /*
@@ -58,12 +58,13 @@ class createUser{
      */
 
 
-    public function createUserEntry() {
+    public function createUserEntry()
+    {
         // Make the connection...
         $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // ... and ensure it works
-        if(mysqli_connect_errno($DBConnection)){
+        if (mysqli_connect_errno($DBConnection)) {
             echo "Failed to connect to the database: " . mysqli_connect_error();
             exit();
         }
@@ -100,13 +101,14 @@ class createUser{
      */
 
 
-    public function createUserTable() {
+    public function createUserTable()
+    {
 
         // Make the connection...
         $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // ... and ensure it works
-        if(mysqli_connect_errno($DBConnection)){
+        if (mysqli_connect_errno($DBConnection)) {
             echo "Failed to connect to the database: " . mysqli_connect_error();
             exit();
         }
@@ -123,7 +125,6 @@ class createUser{
                             entryType VARCHAR (45),
                             entryDate DATETIME NOT NULL
         )";
-
 
 
         $DBConnection->query($tableQuery);
@@ -149,13 +150,14 @@ class createUser{
      *  |   |  |   _   || |_|   ||       ||   |___   | | |   ||   _   || ||_|| ||   |___
      *  |___|  |__| |__||_______||_______||_______|  |_|  |__||__| |__||_|   |_||_______|
      */
-    public function setUserTableName() {
+    public function setUserTableName()
+    {
 
         // Make the connection...
         $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // ... and ensure it works
-        if(mysqli_connect_errno($DBConnection)){
+        if (mysqli_connect_errno($DBConnection)) {
             echo "Failed to connect to the database: " . mysqli_connect_error();
             exit();
         }
@@ -179,7 +181,8 @@ class createUser{
      *   \____|_____| |_|    \___/|____/|_____|_| \_\ |___|____/
      */
 
-    public function getUserID() {
+    public function getUserID()
+    {
 
 
         $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
