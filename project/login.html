@@ -13,10 +13,10 @@
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen"/>
     <link rel="stylesheet" href="css/style.css" media="screen"/>
-    <title>Create User Entry</title>
+    <title>Login</title>
 </head>
-<body>
 
+<body>
 <div class="navbar-wrapper">
     <div class="container">
         <div class="navbar navbar-inverse">
@@ -50,51 +50,23 @@
 
 
 <div class="container">
-    <h1>Add Entry</h1>
+    <h1>Login</h1>
 
-    <form action="php/processEntry.php" method="POST" class="form-horizontal" id="createEntry">
-
+    <form action="php/login" method="POST" class="form-horizontal" id="login">
 
         <div class="control-group">
-            <label for="tableName" class="control-label">Table Name:</label>
+            <label for="loginForm" class="control-label">Email:</label>
 
             <div class="controls">
-                <input type="text" name="tableName" class="span4" id="tableName"/>
+                <input type="text" name="loginForm" id="loginForm" class="span4"/>
             </div>
         </div>
 
         <div class="control-group">
-            <label for="entryName" class="control-label">Entry Name:</label>
+            <label for="passwordForm" class="control-label">Password:</label>
 
             <div class="controls">
-                <input type="text" name="entryName" class="span4" id="entryName"/> <br>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label for="entryType" class="control-label">Entry Type:</label>
-
-            <div class="controls">
-                <input type="text" name="entryType" class="span4" id="entryType"/> <br>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label for="entryDate" class="control-label">Entry Date:</label>
-
-            <div class="controls">
-                <input type="text" name="entryDate" class="span4" id="entryDate"/> <br>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label for="entryDesc" class="control-label">Entry Desc:</label>
-
-            <div class="controls">
-                <br> <textarea name="entryDesc" cols="30" rows="10" class="span4" id="entryDesc">
-            </textarea>
-
-                <br> <input type="submit" value="Submit" class="btn"/>
+                <input type="password" name="passwordForm" id="passwordForm" class="span4"/>
             </div>
         </div>
     </form>

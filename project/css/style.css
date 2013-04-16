@@ -32,3 +32,8 @@
     width: auto;
     display: inline;
 }
+
+body {
+    padding-top: 10px;
+    padding-bottom: 40px;
+}

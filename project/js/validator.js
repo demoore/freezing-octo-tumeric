@@ -67,28 +67,30 @@ function passwordStrength(password, passwordStrength, errorField) {
 
 }
 
-$(document).ready(function () {
-    $('#createUser').validate({
-        rules: {
-            firstName: "required",
-            userEmail: {
-                required: true,
-                userEmail: true
-            },
-            rePassword: {
-                required: true,
-                minLength: 5,
-                equalTo: "#password"
-            }
-        },
-        messages: {
-            firstName: "Please enter your first name",
-            userEmail: "Please provide an email",
-            rePassword: {
-                required: "You need to provide a password",
-                minLength: "Your password must be at least 5 characters long",
-                equalTo: "Your password does not match"
-            }
-        }
-    });
-});
+function checkPass() {
+    //Store the password field objects into variables ...
+    var password = document.getElementById('password');
+    var rePassword = document.getElementById('rePassword');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessage');
+    //Set the colors we will be using ...
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    //Compare the values in the password field
+    //and the confirmation field
+    if (password.value == rePassword.value) {
+        //The passwords match.
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password
+        rePassword.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "Passwords Match!"
+    } else {
+        //The passwords do not match.
+        //Set the color to the bad color and
+        //notify the user.
+        rePassword.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "Passwords do not match"
+    }
+}
