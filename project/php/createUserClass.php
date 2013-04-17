@@ -28,10 +28,7 @@ class createUser
         $this->tableName = "";
 
 
-        // Check the bloody password
-        if (crackLibCheck($inPassword, $message)) {
-            $this->password = $inPassword;
-        }
+        $this->password = $inPassword;
 
 
         // create the user name from the userEmail
@@ -127,7 +124,7 @@ class createUser
         )";
 
 
-        $DBConnection->query($tableQuery);
+        $DBConnection->query($tableQuery) or die(mysqli_error($DBConnection));
 
         $DBConnection->close();
 
@@ -166,7 +163,8 @@ class createUser
                            SET userTable=\"$this->tableName\"
                            WHERE userID=$this->userID";
 
-        $DBConnection->query($tableNameQuery);
+        $DBConnection->query($tableNameQuery) or die(mysqli_error($DBConnection));
+        $DBConnection->close();
     }
 
 
@@ -195,8 +193,8 @@ class createUser
 
         $userIDQuery = "SELECT userID FROM users WHERE userEmail LIKE \"$this->email\"";
 
-        $userIDRow = $DBConnection->query($userIDQuery);
-        $userIDArray = mysqli_fetch_row($userIDRow);
+        $userIDRow = $DBConnection->query($userIDQuery) or die(mysqli_error($DBConnection));
+        $userIDArray = mysqli_fetch_row($userIDRow) or die(mysqli_error($DBConnection));
 
         $userID = $userIDArray;
 

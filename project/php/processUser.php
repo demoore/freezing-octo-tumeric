@@ -18,19 +18,6 @@ $password = $_POST['password'];
 $rePassword = $_POST['rePassword'];
 
 
-if ($rePassword != $password) {
-    echo "Go back stranger! Your passwords did not match";
-    return;
-}
-
-if ($firstName == "" || $firstName == null) {
-    echo "What are you doing? You didn't put in a name";
-}
-
-if ($userEmail == "" || $userEmail == null) {
-    echo "You didn't put in an email address. Now how will we reach you?";
-}
-
 $user = new createUser($userEmail, $password, $firstName);
 
 //This is just for debug information, we'll remove it when we're done.
