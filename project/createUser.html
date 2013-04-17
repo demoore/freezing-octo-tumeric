@@ -62,7 +62,8 @@ verification later --Dylan
             <label class="control-label" for="userEmail">Email:</label>
 
             <div class="controls">
-                <input type="text" name="userEmail" class="span4" id="userEmail"/> <br>
+                <input type="text" name="userEmail" class="span4" id="userEmail" onblur="validateForm()"/>
+                <span id="confirmEmail"></span> <br>
             </div>
         </div>
 
@@ -81,7 +82,10 @@ verification later --Dylan
             <label for="rePassword" class="control-label">Retype Password:</label>
 
             <div class="controls">
-                <input type="password" name="rePassword" class="span4" id="rePassword"/> <br>
+                <input type="password" name="rePassword"
+                       class="span4" id="rePassword"
+                       onkeyup="checkPass(); return false;"/>
+                <span id="confirmMessage"></span><br>
             </div>
         </div>
 

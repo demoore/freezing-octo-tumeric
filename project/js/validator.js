@@ -7,13 +7,17 @@
 // TODO I'd switch this up, message boxes are so passé
 function validateForm() {
 //validate userEmail address if it is blank or invalid
-    var x = document.forms["fillOut"]["userEmail"].value;
+    var x = document.forms["createUser"]["userEmail"].value;
     var atpos = x.indexOf("@");
     var dotpos = x.lastIndexOf(".");
+    var emailConfirmation = document.getElementById('confirmEmail');
 //Display a dialog box indicating if the user has typed an invalid userEmail or null value and let them edit the userEmail.
     if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
-        alert("Null or invalid userEmail address entered please try again");
-        return false;
+        emailConfirmation.className = "label label-important";
+        emailConfirmation.innerHTML = "Incompatible Address";
+    } else {
+        emailConfirmation.className = "label label-success";
+        emailConfirmation.innerHTML = "Huzzah";
     }
 }
 
@@ -82,15 +86,15 @@ function checkPass() {
         //The passwords match.
         //Set the color to the good color and inform
         //the user that they have entered the correct password
-        rePassword.style.backgroundColor = goodColor;
-        message.style.color = goodColor;
-        message.innerHTML = "Passwords Match!"
+        rePassword.className = "alert alert-success";
+        message.innerHTML = "Passwords Match!";
+        message.className = "label label-success";
     } else {
         //The passwords do not match.
         //Set the color to the bad color and
         //notify the user.
-        rePassword.style.backgroundColor = badColor;
-        message.style.color = badColor;
-        message.innerHTML = "Passwords do not match"
+        rePassword.className = "alert alert-error";
+        message.innerHTML = "Passwords do not match";
+        message.className = "label label-important";
     }
 }
