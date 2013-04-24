@@ -4,7 +4,7 @@
  * Date: 2013-04-17
  * Time: 12:10 PM
  */
- 
+
 /**
  * User: Gus
  * Date: 2013-04-21
@@ -13,29 +13,27 @@
 
 
 //Set the time to 3600
-$time=3600;
+$time = 3600;
 // Set the session name, id , time + time integer value
-setcookie(session_name(),session_id(),time()+$time);
+setcookie(session_name(), session_id(), time() + $time);
 session_start();
 require('../../databaseAccess.php');
-  
- 
+
+
 // TODO SQL injection protection
 // Check if the user has already logged in
-   if(isset($_SESSION['loginForm'], $_SESSION['passwordForm'])) {
-     
-     $userEmail = $_SESSION['loginForm'];
-     $password = $_SESSION['passwordForm'];
-	echo"<a href='logout.php'>Logout</a>";
-}
+if (isset($_SESSION['loginForm'], $_SESSION['passwordForm'])) {
 
-else{
+    $userEmail = $_SESSION['loginForm'];
+    $password = $_SESSION['passwordForm'];
+    echo "<a href='logout.php'>Logout</a>";
+} else {
 // First we get the parameters
-    
-  $userEmail = $_POST['loginForm'];
-  $password = $_POST['passwordForm'];
-  $_SESSION['loginForm'] = $userEmail;
-  $_SESSION['passwordForm'] = $password;
+
+    $userEmail = $_POST['loginForm'];
+    $password = $_POST['passwordForm'];
+    $_SESSION['loginForm'] = $userEmail;
+    $_SESSION['passwordForm'] = $password;
 
 }
 
@@ -51,9 +49,9 @@ $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if (mysqli_connect_errno($DBConnection)) {
     echo "Failed to connect to the database: " . mysqli_connect_error();
     exit();
-	
-}
 
+}
+/*
 $queryResults = $DBConnection->query($userQuery) or die(mysqli_error($DBConnection));
 
 if ($queryResults->num_rows == 1) {
@@ -77,4 +75,4 @@ $DBConnection->close();
 
 
 
-
+*/
