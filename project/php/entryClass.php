@@ -13,8 +13,7 @@ namespace entry;
  * @args    table name, entry name, entry date
  */
 
-class entry
-{
+class entry {
 
     private $entryName;
     private $entryText;
@@ -25,26 +24,24 @@ class entry
     private $entryID;
     private $userTableName;
 
-    function __construct($inUserTableName, $inEntryName, $inEntryDate)
-    {
+    function __construct($inUserTableName, $inEntryName, $inEntryDate) {
         $this->userTableName = $inUserTableName;
-        $this->entryName = $inEntryName;
+        $this->entryName     = $inEntryName;
 
 
-        $this->entryDate = $this->transformDate($inEntryDate);
+        $this->entryDate     = $this->transformDate($inEntryDate);
 
         $this->createEntry();
         $this->entryID = $this->getEntryID();
 
     }
 
-    public function createEntry()
-    {
+    public function createEntry() {
         // Make the connection...
         $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // ... and ensure it works
-        if (mysqli_connect_errno($DBConnection)) {
+        if(mysqli_connect_errno($DBConnection)){
             echo "Failed to connect to the database: " . mysqli_connect_error();
             exit();
         }
@@ -53,26 +50,27 @@ class entry
                        VALUES (\"$this->entryName\", \"$this->entryDate\")";
 
 
+
         $DBConnection->query($entryQuery) or die(mysqli_error($DBConnection));
         $DBConnection->close();
 
 
+
     }
 
-    public function createStartAndEndTime($entryStartTime, $entryEndTime)
-    {
+    public function createStartAndEndTime($entryStartTime, $entryEndTime) {
         // Make the connection...
         $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // ... and ensure it works
-        if (mysqli_connect_errno($DBConnection)) {
+        if(mysqli_connect_errno($DBConnection)){
             echo "Failed to connect to the database: " . mysqli_connect_error();
             exit();
         }
 
 
         $this->entryStartTime = $this->transformTime($entryStartTime);
-        $this->entryEndTime = $this->transformTime($entryEndTime);
+        $this->entryEndTime   = $this->transformTime($entryEndTime);
 
 
         $entryQuery = "INSERT INTO $this->userTableName (entryStartTime, entryEndTime)
@@ -82,13 +80,12 @@ class entry
         $DBConnection->close();
     }
 
-    public function createEntryType($entryType)
-    {
+    public function createEntryType($entryType) {
         // Make the connection...
         $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // ... and ensure it works
-        if (mysqli_connect_errno($DBConnection)) {
+        if(mysqli_connect_errno($DBConnection)){
             echo "Failed to connect to the database: " . mysqli_connect_error();
             exit();
         }
@@ -103,19 +100,18 @@ class entry
 
     }
 
-    public function deleteEntry($inEntryToDelete)
-    {
+    public function deleteEntry($inEntryToDelete) {
         // Make the connection...
         $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // ... and ensure it works
-        if (mysqli_connect_errno($DBConnection)) {
+        if(mysqli_connect_errno($DBConnection)){
             echo "Failed to connect to the database: " . mysqli_connect_error();
             exit();
         }
 
 
-        $deleteQuery = "DELETE FROM $this->userTableName
+        $deleteQuery ="DELETE FROM $this->userTableName
                        WHERE entryID = $inEntryToDelete";
 
         $DBConnection->query($deleteQuery) or die(mysqli_error($DBConnection));
@@ -123,13 +119,12 @@ class entry
 
     }
 
-    public function moveEntryDate($newEntryDate)
-    {
+    public function moveEntryDate($newEntryDate) {
         // Make the connection...
         $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // ... and ensure it works
-        if (mysqli_connect_errno($DBConnection)) {
+        if(mysqli_connect_errno($DBConnection)){
             echo "Failed to connect to the database: " . mysqli_connect_error();
             exit();
         }
@@ -145,13 +140,12 @@ class entry
 
     }
 
-    public function getEntryID()
-    {
+    public function getEntryID() {
         // Make the connection...
         $DBConnection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // ... and ensure it works
-        if (mysqli_connect_errno($DBConnection)) {
+        if(mysqli_connect_errno($DBConnection)){
             echo "Failed to connect to the database: " . mysqli_connect_error();
             exit();
         }
@@ -171,16 +165,14 @@ class entry
     }
 
 
-    private function transformDate($inDate)
-    {
+    private function transformDate($inDate){
         //Some date processing
-        $inDate = date("Y-m-d", strtotime($inDate));
+        $inDate = date ("Y-m-d", strtotime($inDate));
         return $inDate;
     }
 
-    private function transformTime($inTime)
-    {
-        $inTime = date("HH:MM:SS" . strtotime($inTime));
+    private function transformTime($inTime) {
+        $inTime = date("HH:MM:SS". strtotime($inTime));
         return $inTime;
 
     }
@@ -268,6 +260,9 @@ class entry
     {
         return $this->entryType;
     }
+
+
+
 
 
 }

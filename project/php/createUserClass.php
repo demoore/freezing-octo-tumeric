@@ -28,7 +28,9 @@ class createUser
         $this->tableName = "";
 
 
-        $this->password = $inPassword;
+
+            $this->password = $inPassword;
+
 
 
         // create the user name from the userEmail
